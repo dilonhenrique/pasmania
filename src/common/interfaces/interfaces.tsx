@@ -35,3 +35,24 @@ export interface IPedido {
   quantity: number;
   sku: string;
 }
+
+export interface IEndereco {
+  bairro: string,
+  casa: string,
+  cep: string,
+  cidade: string,
+  complemento: string,
+  numero: string,
+  rua: string,
+  uf: string,
+}
+
+export interface ICliente {
+  cpf: string,
+  ddd: string,
+  email: string,
+  endereco: IEndereco[],
+  key: string,
+  nome: string,
+  telefone: string,
+}

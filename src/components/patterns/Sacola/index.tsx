@@ -3,53 +3,22 @@ import styles from './Sacola.module.scss';
 import productStyles from './SacolaProduct/SacolaProduct.module.scss';
 import SacolaProduct from './SacolaProduct';
 import { useSacolaContext } from '@/common/context/sacola';
-import { Box, Collapse, Drawer, IconButton, Stack, Tooltip, Typography } from '@mui/material';
+import { Collapse, Stack, Typography } from '@mui/material';
 import { TransitionGroup } from 'react-transition-group';
 import useValorSacola from '@/common/hooks/useValorSacola';
-import { TbPaperBagOff } from 'react-icons/tb';
-import { MdClose } from 'react-icons/md';
 
-interface SacolaProps {
-  openMenu: boolean;
-  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Sacola({ openMenu, setOpenMenu }: SacolaProps) {
-  const { sacola, setSacola } = useSacolaContext();
+export default function Sacola() {
+  const { sacola, emptySacola } = useSacolaContext();
   const { subtotal, frete, total } = useValorSacola();
 
-  function limparSacola() {
-    setSacola([]);
-  }
-
-  const handleClose = () => {
-    setOpenMenu(false)
-  };
-
   return (
-    <Drawer
-      anchor='right'
-      open={openMenu}
-      onClose={handleClose}
-      PaperProps={{
-        sx: {
-          padding: '5rem 3rem',
-          width: '500px',
-          maxWidth: '100%',
-        }
-      }}
-    >
-      <Stack alignItems='flex-end'>
-        <IconButton onClick={handleClose}>
-          <MdClose />
-        </IconButton>
-      </Stack>
+    <>
       {sacola.length
         ? <div>
           <Stack className={styles.title}>
             <Typography variant='h5' color='primary' sx={{ mb: 2 }}>Sua sacola:</Typography>
             {/* <Tooltip title='Limpar sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
-              <IconButton color='error' onClick={limparSacola}>
+              <IconButton color='error' onClick={emptySacola}>
                 <TbPaperBagOff />
               </IconButton>
             </Tooltip> */}
@@ -79,6 +48,6 @@ export default function Sacola({ openMenu, setOpenMenu }: SacolaProps) {
         </div>
         : <>Nenhum item na sua sacola :(</>
       }
-    </Drawer>
+    </>
   )
 }

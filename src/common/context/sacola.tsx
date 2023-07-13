@@ -1,5 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { ISacolaProduct } from "../interfaces/interfaces";
+import { IProduct, ISacolaProduct } from "../interfaces/interfaces";
+import { v4 as uuid } from 'uuid';
+
+const keySacola = 'sacolaPasmania';
 
 export const SacolaContext = createContext<SacolaContextProps | null>(null);
 SacolaContext.displayName = 'Sacola';
@@ -8,17 +11,17 @@ interface SacolaProviderProps {
   children: React.ReactNode;
 }
 
-export function SacolaProvider({ children }:SacolaProviderProps) {
+export function SacolaProvider({ children }: SacolaProviderProps) {
   const [sacola, setSacola] = useState<ISacolaProduct[]>([]);
 
   async function getSacola() {
-    //get sacola from session
-    setSacola([]);
+    const novaSacola = localStorage.getItem(keySacola);
+    if(novaSacola) setSacola(JSON.parse(novaSacola));
   }
-  
+
   useEffect(() => {
     getSacola();
-  },[])
+  }, [])
 
   return (
     <SacolaContext.Provider value={{ sacola, setSacola }}>
@@ -30,9 +33,23 @@ export function SacolaProvider({ children }:SacolaProviderProps) {
 export function useSacolaContext() {
   const { sacola, setSacola } = useContext(SacolaContext) as SacolaContextProps;
 
+  function addItemSacola(product: IProduct) {
+    setSacola((sacolaAtual) => {
+      const novaSacola = [...sacolaAtual, { ...product, id: uuid() }]
+      localStorage.setItem(keySacola, JSON.stringify(novaSacola));
+      return novaSacola;
+    });
+  }
+
+  function emptySacola(){
+    setSacola([]);
+  }
+
   return {
     sacola,
-    setSacola
+    setSacola,
+    addItemSacola,
+    emptySacola,
   }
 }
 

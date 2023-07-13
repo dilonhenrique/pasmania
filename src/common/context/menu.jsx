@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { bitbar } from '@/common/infra/services'
+import { bitbar } from '@/common/infra/apiServices'
 
 export const MenuContext = createContext();
 MenuContext.displayName = 'Menu';

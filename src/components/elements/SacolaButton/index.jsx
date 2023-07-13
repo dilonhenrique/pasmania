@@ -3,7 +3,7 @@ import { Badge, Button, Collapse } from '@mui/material'
 import { TbPaperBag } from 'react-icons/tb';
 import styles from './Sacola.module.scss';
 import { useSacolaContext } from '@/common/context/sacola';
-import Sacola from '@/components/patterns/Sacola';
+import Checkout from '@/components/patterns/Checkout';
 import useValorSacola from '@/common/hooks/useValorSacola';
 
 export default function SacolaButton() {
@@ -37,7 +37,7 @@ export default function SacolaButton() {
           <p><small>R$</small> {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).slice(3)}</p>
         </Collapse>
       </Button>
-      <Sacola openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <Checkout openMenu={openMenu} setOpenMenu={setOpenMenu} />
     </div>
   )
 }

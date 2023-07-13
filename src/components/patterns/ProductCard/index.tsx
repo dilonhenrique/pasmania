@@ -13,10 +13,7 @@ interface ProductCardProps {
 
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { setSacola } = useSacolaContext();
-  function addProduct() {
-    setSacola((sacolaAtual) => [...sacolaAtual, { ...product, id: uuid() }])
-  }
+  const { addItemSacola } = useSacolaContext();
 
   return (
     <li className={styles.productContainer}>
@@ -36,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               variant='contained'
               size='large'
               disableElevation
-              onClick={addProduct}
+              onClick={() => addItemSacola(product)}
               sx={{
                 minWidth: 0,
                 width: '40px',
