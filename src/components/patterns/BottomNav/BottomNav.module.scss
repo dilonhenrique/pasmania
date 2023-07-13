@@ -1,0 +1,43 @@
+.bottomNavContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 2;
+
+  .bottomNav {
+    background-color: #212121;
+    width: 100%;
+    z-index: 3;
+
+    ul {
+      list-style: none;
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .bottomNavLink a {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: #FFFFFF;
+      opacity: 0.7;
+      transition: 250ms;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .bottomNavLink__label {
+        font-size: 10px;
+        line-height: 1em;
+      }
+    }
+  }
+}

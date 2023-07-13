@@ -1,0 +1,47 @@
+.menuContainer {
+  display: flex;
+  justify-content: center;
+  background-color: #FFFFFF;
+  position: fixed;
+  top: calc(4rem - 1px);
+  z-index: 2;
+  width: 100%;
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
+  height: 50px;
+
+  :global(.container) {
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .menuItem {
+    color: #909090;
+    transition: 0.3s;
+
+    &.active {
+      // font-weight: 700;
+      color: #F7BA00;
+      border-bottom: 2px solid #F7BA00;
+    }
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #e3e3e3;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #dfdfdf;
+  }
+}

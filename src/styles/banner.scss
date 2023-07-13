@@ -1,0 +1,26 @@
+/*BANNER*/
+.awssld {
+  --organic-arrow-height: 16px!important;
+  --organic-arrow-color: #ffffff!important;
+
+  aspect-ratio: 20/7;
+  overflow: hidden;
+  
+  @media (min-width:600px){
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+
+
+  .awssld__prev::after,
+  .awssld__next::after {
+    content: '';
+    background-color: #212121;
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    z-index: -1;
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+}

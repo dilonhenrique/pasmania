@@ -1,0 +1,20 @@
+.category {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.categoryList {
+  padding-bottom: 40px;
+}
+
+.productList {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  list-style: none;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
