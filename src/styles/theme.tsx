@@ -1,25 +1,33 @@
 import LinkIntegration from "@/components/elements/LinkIntegration";
-import { createTheme, LinkProps as MuiLinkProps } from "@mui/material";
+import { createTheme, LinkProps as MuiLinkProps, Theme, Typography } from "@mui/material";
 
 const theme = createTheme({
   typography: {
     fontFamily: "'Open-sans', sans-serif",
     h1: { fontWeight: 700 },
-    h2: { fontWeight: 700 },
-    h3: { fontWeight: 700 },
+    h2: {
+      fontWeight: 200,
+      textTransform: 'uppercase',
+      fontSize: '24px',
+      color: '#858585',
+    },
+    h3: {
+      fontWeight: 200,
+      textTransform: 'uppercase',
+      fontSize: '20px',
+      color: '#858585',
+    },
     h4: { fontWeight: 700 },
     h5: { fontWeight: 700 },
     h6: { fontWeight: 700 },
   },
   palette: {
     primary: {
+      main: '#505050',
+    },
+    secondary: {
       main: '#F7BA00',
     },
-    // secondary: {
-    //   light: '#42a5f5',
-    //   main: '#1976d2',
-    //   dark: '#1565c0',
-    // },
   },
   components: {
     MuiLink: {
@@ -32,6 +40,32 @@ const theme = createTheme({
         LinkComponent: LinkIntegration
       }
     },
+    // MuiButton: {
+    //   defaultProps: {
+    //     color: 'primary',
+    //   }
+    // },
+    MuiDialog: {
+      styleOverrides: {
+        root: {
+          textAlign: 'center',
+          '.MuiPaper-root': {
+            maxWidth: '100%',
+            width: '400px',
+          }
+        },
+      }
+    },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          paddingTop: '1.5rem',
+          paddingBottom: '.5rem',
+          color: theme.palette.grey[600],
+          fontWeight: 200,
+        })
+      }
+    }
   },
 })
 

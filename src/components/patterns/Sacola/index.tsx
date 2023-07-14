@@ -3,7 +3,7 @@ import styles from './Sacola.module.scss';
 import productStyles from './SacolaProduct/SacolaProduct.module.scss';
 import SacolaProduct from './SacolaProduct';
 import { useSacolaContext } from '@/common/context/sacola';
-import { Collapse, Stack, Typography } from '@mui/material';
+import { Collapse, Divider, Stack, Typography } from '@mui/material';
 import { TransitionGroup } from 'react-transition-group';
 import useValorSacola from '@/common/hooks/useValorSacola';
 
@@ -16,7 +16,7 @@ export default function Sacola() {
       {sacola.length
         ? <div>
           <Stack className={styles.title}>
-            <Typography variant='h5' color='primary' sx={{ mb: 2 }}>Sua sacola:</Typography>
+            <Typography variant='h3' color='secondary'>Sua sacola:</Typography>
             {/* <Tooltip title='Limpar sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
               <IconButton color='error' onClick={emptySacola}>
                 <TbPaperBagOff />
@@ -32,7 +32,9 @@ export default function Sacola() {
               )
             })}
           </TransitionGroup>
-          <hr style={{ marginBottom: '1rem', marginTop: '.5rem' }} />
+
+          <Divider sx={{ marginBottom: '1rem', marginTop: '.5rem' }} />
+
           <div className={productStyles.productContainer}>
             <div>Subtotal</div>
             <div>{subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>

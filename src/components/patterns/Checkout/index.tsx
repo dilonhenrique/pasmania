@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, IconButton, Stack } from '@mui/material';
+import { Divider, Drawer, IconButton, Stack } from '@mui/material';
 import { MdClose } from 'react-icons/md';
 import Sacola from '../Sacola';
 import DeliveryAddress from '../DeliveryAdress';
@@ -32,8 +32,10 @@ export default function Checkout({ openMenu, setOpenMenu }: CheckoutProps) {
           <MdClose />
         </IconButton>
       </Stack>
-      <DeliveryAddress />
-      <Sacola />
+      <Stack gap={4}>
+        <Sacola />
+        <DeliveryAddress />
+      </Stack>
     </Drawer>
   )
 }

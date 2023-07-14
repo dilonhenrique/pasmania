@@ -29,7 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
           <div className={styles.productQuickAdd}>
             <Button
-              color='primary'
+              color='secondary'
               variant='contained'
               size='large'
               disableElevation

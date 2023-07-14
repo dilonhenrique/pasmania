@@ -29,7 +29,7 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
       </div>
       <div>
         <Tooltip title='Tirar da sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
-          <IconButton color='error' onClick={removeProductFromSacola}>
+          <IconButton onClick={removeProductFromSacola}>
             <TiDelete />
           </IconButton>
         </Tooltip>

@@ -13,7 +13,7 @@ export default function Header() {
   const isMobile = useMobile();
 
   return (
-    <header className={styles.header} style={{ backgroundColor: theme.palette.primary.main }}>
+    <header className={styles.header} style={{ backgroundColor: theme.palette.secondary.main }}>
       <div className='container'>
         <div className={ `${styles.iconContainer} ${isMobile ? styles.mobile : ''}`}>
           <SideMenu />

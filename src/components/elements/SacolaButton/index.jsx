@@ -18,10 +18,10 @@ export default function SacolaButton() {
 
   return (
     <div>
-      <Button onClick={handleOpen} className={`${styles.sacolaButton} ${sacola.length ? styles.withProduct : ''}`}>
+      <Button onClick={handleOpen} color='secondary' className={`${styles.sacolaButton} ${sacola.length ? styles.withProduct : ''}`}>
         <Badge
           badgeContent={sacola.length}
-          color="primary"
+          color="secondary"
           sx={{
             '.MuiBadge-badge': {
               height: '15px',
