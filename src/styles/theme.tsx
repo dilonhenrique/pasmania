@@ -6,13 +6,13 @@ const theme = createTheme({
     fontFamily: "'Open-sans', sans-serif",
     h1: { fontWeight: 700 },
     h2: {
-      fontWeight: 200,
+      fontWeight: 300,
       textTransform: 'uppercase',
       fontSize: '24px',
       color: '#858585',
     },
     h3: {
-      fontWeight: 200,
+      fontWeight: 300,
       textTransform: 'uppercase',
       fontSize: '20px',
       color: '#858585',
@@ -62,7 +62,7 @@ const theme = createTheme({
           paddingTop: '1.5rem',
           paddingBottom: '.5rem',
           color: theme.palette.grey[600],
-          fontWeight: 200,
+          fontWeight: 300,
         })
       }
     }
