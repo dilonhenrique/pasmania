@@ -44,7 +44,7 @@ export default function SacolaButton() {
   const { total } = useValorSacola();
 
   const handleOpen = () => {
-    setOpenMenu(true);
+    setOpenMenu(atual => !atual);
     // setSacola(!sacola.length ? [1,2,3] : []);
   };
 

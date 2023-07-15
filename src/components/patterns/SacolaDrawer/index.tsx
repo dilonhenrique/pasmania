@@ -3,6 +3,7 @@ import { Drawer, IconButton, Stack } from '@mui/material';
 import { MdClose } from 'react-icons/md';
 import Sacola from '../Sacola';
 import { useSacolaContext } from '@/common/context/sacola';
+import useMobile from '@/common/hooks/useMobile';
 
 interface SacolaDrawerProps {
   openMenu: boolean;
@@ -11,6 +12,7 @@ interface SacolaDrawerProps {
 
 export default function SacolaDrawer({ openMenu, setOpenMenu }: SacolaDrawerProps) {
   const { sacola } = useSacolaContext();
+  const isMobile = useMobile();
 
   const handleClose = () => {
     setOpenMenu(false)
@@ -18,7 +20,7 @@ export default function SacolaDrawer({ openMenu, setOpenMenu }: SacolaDrawerProp
 
   return (
     <Drawer
-      anchor='right'
+      anchor={isMobile ? 'bottom' : 'right'}
       open={openMenu}
       onClose={handleClose}
       PaperProps={{

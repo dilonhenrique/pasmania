@@ -1,12 +1,29 @@
 import React, { useState } from 'react'
-import { IconButton, Menu, MenuItem, Tooltip, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material'
-import { TbMenu2 } from 'react-icons/tb';
+import { IconButton, Menu, MenuItem, Tooltip, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Divider, styled } from '@mui/material'
+import { TbMenu2,TbCurrencyDollar,TbClock,TbMap2,TbMessages } from 'react-icons/tb';
+import { HiCurrencyDollar, HiChatAlt2, HiLocationMarker,HiClock } from 'react-icons/hi';
+import useMobile from '@/common/hooks/useMobile';
+
+const Icon = styled(ListItemIcon)(({theme}) => ({
+  color: theme.palette.secondary.main,
+  minWidth: 0,
+  marginRight: 15,
+  'svg': {
+    fontSize: 25
+  }
+}));
+
+const ListButton = styled(ListItemButton)(({theme}) => ({
+  padding: '1rem 3rem 1rem 2rem',
+  fontWeight: 700,
+}))
 
 export default function SideMenu() {
   const [openMenu, setOpenMenu] = useState(false);
+  const isMobile = useMobile();
 
   const handleOpen = () => {
-    setOpenMenu(true)
+    setOpenMenu(atual => !atual)
   };
 
   const handleClose = () => {
@@ -20,30 +37,35 @@ export default function SideMenu() {
           <TbMenu2 />
         </IconButton>
         <Drawer
-          anchor='left'
+          anchor={isMobile ? 'right' : 'left'}
           open={openMenu}
           onClose={handleClose}
         >
           <List>
-            <ListItemButton onClick={handleClose}>
-              <ListItemIcon>
-                <TbMenu2 />
-              </ListItemIcon>
-              <ListItemText primary='Item' />
-            </ListItemButton>
-            <ListItemButton onClick={handleClose}>
-              <ListItemIcon>
-                <TbMenu2 />
-              </ListItemIcon>
-              <ListItemText primary='Item' />
-            </ListItemButton>
-            <Divider />
-            <ListItemButton onClick={handleClose}>
-              <ListItemIcon>
-                <TbMenu2 />
-              </ListItemIcon>
-              <ListItemText primary='Item' />
-            </ListItemButton>
+            <ListButton onClick={handleClose}>
+              <Icon>
+                <TbCurrencyDollar />
+              </Icon>
+              Cashback
+            </ListButton>
+            <ListButton onClick={handleClose}>
+              <Icon>
+                <TbClock />
+              </Icon>
+              Horários de atendimento
+            </ListButton>
+            <ListButton onClick={handleClose}>
+              <Icon>
+                <TbMap2 />
+              </Icon>
+              Áreas de entrega
+            </ListButton>
+            <ListButton onClick={handleClose}>
+              <Icon>
+                <TbMessages />
+              </Icon>
+              Fale conosco
+            </ListButton>
           </List>
         </Drawer>
       </>
