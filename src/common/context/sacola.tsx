@@ -16,7 +16,7 @@ export function SacolaProvider({ children }: SacolaProviderProps) {
 
   async function getSacola() {
     const novaSacola = localStorage.getItem(keySacola);
-    if(novaSacola) setSacola(JSON.parse(novaSacola));
+    if (novaSacola) setSacola(JSON.parse(novaSacola));
   }
 
   useEffect(() => {
@@ -41,7 +41,15 @@ export function useSacolaContext() {
     });
   }
 
-  function emptySacola(){
+  function removeItemSacola(id: string) {
+    setSacola(sacolaAtual => {
+      const novaSacola = sacolaAtual.filter(item => item.id !== id);
+      localStorage.setItem(keySacola, JSON.stringify(novaSacola));
+      return novaSacola;
+    })
+  }
+
+  function emptySacola() {
     setSacola([]);
   }
 
@@ -49,6 +57,7 @@ export function useSacolaContext() {
     sacola,
     setSacola,
     addItemSacola,
+    removeItemSacola,
     emptySacola,
   }
 }

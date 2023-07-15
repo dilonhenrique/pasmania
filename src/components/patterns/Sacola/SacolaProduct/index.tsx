@@ -10,14 +10,7 @@ interface SacolaProductProps {
 }
 
 export default function SacolaProduct({ product }: SacolaProductProps) {
-  const { sacola, setSacola } = useSacolaContext();
-
-  function removeProductFromSacola() {
-    setSacola(sacolaAtual => {
-      const novaSacola = sacolaAtual.filter(item => item.id !== product.id);
-      return novaSacola;
-    })
-  }
+  const { removeItemSacola } = useSacolaContext();
 
   return (
     <div className={styles.sacolaLine}>
@@ -29,7 +22,7 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
       </div>
       <div>
         <Tooltip title='Tirar da sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
-          <IconButton onClick={removeProductFromSacola}>
+          <IconButton onClick={() => removeItemSacola(product.id)}>
             <TiDelete />
           </IconButton>
         </Tooltip>
