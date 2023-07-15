@@ -34,25 +34,25 @@ export default function BottomNav() {
         <nav className={styles.bottomNav}>
           <ul>
             <li className={styles.bottomNavLink}>
-              <ButtonBase href='/' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/' && 'active'}>
+              <ButtonBase href='/' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/' ? 'active' : ''}>
                 <TbToolsKitchen2 size={30} />
                 <span className={styles.bottomNavLink__label}>Cardápio</span>
               </ButtonBase>
             </li>
             <li className={styles.bottomNavLink}>
-              <ButtonBase href='/buscar' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/buscar' && 'active'}>
+              <ButtonBase href='/buscar' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/buscar' ? 'active' : ''}>
                 <TbSearch size={30} />
                 <span className={styles.bottomNavLink__label}>Busca</span>
               </ButtonBase>
             </li>
             <li className={styles.bottomNavLink}>
-              <ButtonBase href='/pedidos' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/pedidos' && 'active'}>
+              <ButtonBase href='/pedidos' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/pedidos' ? 'active' : ''}>
                 <TbReceipt size={30} />
                 <span className={styles.bottomNavLink__label}>Pedidos</span>
               </ButtonBase>
             </li>
             <li className={styles.bottomNavLink}>
-              <ButtonBase onClick={() => setOpenDraw('perfil')} className={openDraw === 'perfil' && 'active'}>
+              <ButtonBase onClick={() => setOpenDraw('perfil')} className={openDraw === 'perfil' ? 'active' : ''}>
                 <TbUser size={30} />
                 <span className={styles.bottomNavLink__label}>Perfil</span>
               </ButtonBase>
@@ -70,7 +70,7 @@ export default function BottomNav() {
       >
         <List disablePadding>
           <ListItem sx={{ mt: 1 }}>
-            <DrawerTitle handleClose={handleClose}>Olá, {cliente.nome}</DrawerTitle>
+            <DrawerTitle handleClose={handleClose}>Olá, {cliente?.nome}</DrawerTitle>
           </ListItem>
           <UserMenu />
         </List>
