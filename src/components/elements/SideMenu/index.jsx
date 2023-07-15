@@ -8,12 +8,13 @@ const Icon = styled(ListItemIcon)(({theme}) => ({
   color: theme.palette.secondary.main,
   minWidth: 0,
   marginRight: 15,
+  justifyContent: 'flex-end',
   'svg': {
     fontSize: 25
   }
 }));
 
-const ListButton = styled(ListItemButton)(({theme}) => ({
+const ListButton = styled(MenuItem)(({theme}) => ({
   padding: '1rem 3rem 1rem 2rem',
   fontWeight: 700,
 }))

@@ -17,7 +17,11 @@ const theme = createTheme({
       fontSize: '18px',
       color: '#858585',
     },
-    h4: { fontWeight: 700 },
+    h4: {
+      fontWeight: 200,
+      fontSize: '22px',
+      color: '#858585',
+    },
     h5: { fontWeight: 700 },
     h6: { fontWeight: 700 },
   },
@@ -74,7 +78,7 @@ const theme = createTheme({
         },
         paper:{
           paddingTop: '4rem',
-
+          paddingBottom: '4.5rem',
         }
       }
     }

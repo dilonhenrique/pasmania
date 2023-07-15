@@ -2,7 +2,7 @@ import React from 'react';
 import PasmaniaLogo from './PasmaniaLogo';
 import SideMenu from '@/components/elements/SideMenu';
 import SearchBar from '@/components/elements/SearchBar';
-import UserMenu from '@/components/elements/UserMenu';
+import UserMenuButton from '@/components/elements/UserMenu/UserMenuButton';
 import SacolaButton from '@/components/elements/SacolaButton';
 import styles from './Header.module.scss';
 import { useTheme } from '@emotion/react';
@@ -23,7 +23,7 @@ export default function Header() {
           <>
             <SearchBar />
             <div className={styles.iconContainer}>
-              <UserMenu />
+              <UserMenuButton />
               <SacolaButton />
             </div>
           </>}

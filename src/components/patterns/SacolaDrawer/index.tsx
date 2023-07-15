@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, IconButton, Stack } from '@mui/material';
+import { Box, Drawer, IconButton, Stack } from '@mui/material';
 import { MdClose } from 'react-icons/md';
 import Sacola from '../Sacola';
 import { useSacolaContext } from '@/common/context/sacola';
@@ -25,17 +25,16 @@ export default function SacolaDrawer({ openMenu, setOpenMenu }: SacolaDrawerProp
       onClose={handleClose}
       PaperProps={{
         sx: {
-          px: '3rem',
-          paddingTop: '5rem',
-          paddingBottom: '3rem',
+          px: isMobile ? '2rem' : '3rem',
           width: '500px',
           maxWidth: '100%',
+          height: '100%',
           justifyItems: 'stretch',
         }
       }}
     >
-      <Stack gap={2} flexGrow={1}>
-        <div>
+      <Stack gap={2} flexGrow={1} py={2}>
+        <div style={{ textAlign: isMobile ? 'right' : 'left', marginLeft:'-.5em',marginTop:'-.5em' }}>
           <IconButton onClick={handleClose}>
             <MdClose />
           </IconButton>
