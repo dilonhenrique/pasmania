@@ -2,6 +2,7 @@ import React from 'react';
 import { List, ListItem, ListItemButton, ListItemIcon, MenuItem as MenuItemMui, Typography, styled } from '@mui/material';
 import { useClienteContext } from '@/common/context/cliente';
 import { TbUserEdit, TbMapPin, TbReceipt } from 'react-icons/tb';
+import { useOpenContext } from '@/common/context/open';
 
 const Icon = styled(ListItemIcon)(({ theme }) => ({
   color: theme.palette.secondary.main,
@@ -14,8 +15,13 @@ const MenuItem = styled(MenuItemMui)(() => ({
   paddingBottom: '1rem',
 }))
 
-export default function UserMenu({ handleClose }) {
+export default function UserMenu() {
+  const { setOpenDraw } = useOpenContext();
   const { cliente } = useClienteContext();
+
+  function handleClose(){
+    setOpenDraw(null);
+  }
 
   return (
     <div>

@@ -3,16 +3,9 @@ import Banner from '@/components/patterns/Banner';
 import ProductList from '@/components/patterns/ProductList';
 import RestaurantStatus from '@/components/patterns/RestaurantStatus';
 import { useMenuContext } from '@/common/context/menu';
-import BottomNav from '@/components/patterns/BottomNav';
-import useMobile from '@/common/hooks/useMobile';
-import { Slide } from '@mui/material';
-import SacolaMobile from '@/components/elements/SacolaMobile';
-import { useSacolaContext } from '@/common/context/sacola';
 
 export default function Home() {
   const { menu } = useMenuContext();
-  const isMobile = useMobile();
-  const { sacola } = useSacolaContext();
 
   return (
     <>
@@ -27,11 +20,6 @@ export default function Home() {
           <Banner />
           <RestaurantStatus />
           <ProductList />
-          {isMobile && <>
-            <Slide direction='up' in={Boolean(sacola.length)}>
-              <SacolaMobile sacola={sacola} />
-            </Slide>
-          </>}
         </>}
       </main>
     </>

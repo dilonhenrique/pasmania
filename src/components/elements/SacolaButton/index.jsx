@@ -4,6 +4,7 @@ import { TbPaperBag } from 'react-icons/tb';
 import { useSacolaContext } from '@/common/context/sacola';
 import SacolaDrawer from '@/components/patterns/SacolaDrawer';
 import useValorSacola from '@/common/hooks/useValorSacola';
+import { useOpenContext } from '@/common/context/open';
 
 const StyledButton = styled(Button)(() => ({
   padding: '8px',
@@ -39,12 +40,12 @@ const StyledButton = styled(Button)(() => ({
 }))
 
 export default function SacolaButton() {
-  const [openMenu, setOpenMenu] = useState(false);
+  const { setOpenDraw } = useOpenContext();
   const { sacola } = useSacolaContext();
   const { total } = useValorSacola();
 
   const handleOpen = () => {
-    setOpenMenu(atual => !atual);
+    setOpenDraw(atual => atual === 'sacola' ? null : 'sacola');
     // setSacola(!sacola.length ? [1,2,3] : []);
   };
 
@@ -69,7 +70,7 @@ export default function SacolaButton() {
           <p><small>R$</small> {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).slice(3)}</p>
         </Collapse>
       </StyledButton>
-      <SacolaDrawer openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <SacolaDrawer />
     </div>
   )
 }

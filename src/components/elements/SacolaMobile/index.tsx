@@ -5,6 +5,7 @@ import { Badge, Button, styled } from '@mui/material';
 import { TbPaperBag } from 'react-icons/tb';
 import styles from './Sacola.module.scss';
 import { ISacolaProduct } from '@/common/interfaces/interfaces';
+import { useOpenContext } from '@/common/context/open';
 
 interface SacolaMobileProps {
   sacola: ISacolaProduct[];
@@ -32,11 +33,11 @@ const StyledButton = styled(Button)`
 `
 
 const SacolaMobile = forwardRef<HTMLDivElement, SacolaMobileProps>(({ sacola }, ref) => {
-  const [openMenu, setOpenMenu] = useState(false);
+  const { setOpenDraw } = useOpenContext();
   const { total } = useValorSacola();
 
   const handleOpen = () => {
-    setOpenMenu(true);
+    setOpenDraw('sacola');
   };
 
   return (
@@ -59,7 +60,7 @@ const SacolaMobile = forwardRef<HTMLDivElement, SacolaMobileProps>(({ sacola }, 
         <p>Ver sacola</p>
         <p><small>R$</small> {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).slice(3)}</p>
       </StyledButton>
-      <SacolaDrawer openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <SacolaDrawer />
     </div>
   )
 })

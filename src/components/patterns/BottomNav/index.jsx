@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import styles from './BottomNav.module.scss';
-import { ButtonBase, Drawer, IconButton, List, Stack } from '@mui/material';
+import { ButtonBase, Drawer, IconButton, List, Slide, Stack } from '@mui/material';
 import { TbToolsKitchen2, TbSearch, TbReceipt, TbUser } from 'react-icons/tb';
 import UserMenu from '@/components/elements/UserMenu';
 import { MdClose } from 'react-icons/md';
+import useMobile from '@/common/hooks/useMobile';
+import SacolaMobile from '@/components/elements/SacolaMobile';
+import { useSacolaContext } from '@/common/context/sacola';
+import { useOpenContext } from '@/common/context/open';
 
 export default function BottomNav() {
-  const [openUser, setOpenUser] = useState(false);
+  const isMobile = useMobile();
+  const { openDraw, setOpenDraw } = useOpenContext();
+  const { sacola } = useSacolaContext();
+
   function handleClose() {
-    setOpenUser(false);
+    setOpenDraw(null);
   }
 
   return (
     <>
       <div className={styles.bottomNavContainer}>
+        {isMobile &&
+          <Slide direction='up' in={openDraw !== 'sacola' && Boolean(sacola.length)}>
+            <SacolaMobile sacola={sacola} />
+          </Slide>}
         <nav className={styles.bottomNav}>
           <ul>
             <li className={styles.bottomNavLink}>
@@ -35,7 +46,7 @@ export default function BottomNav() {
               </ButtonBase>
             </li>
             <li className={styles.bottomNavLink}>
-              <ButtonBase onClick={() => setOpenUser(true)}>
+              <ButtonBase onClick={() => setOpenDraw('perfil')}>
                 <TbUser size={30} />
                 <span className={styles.bottomNavLink__label}>Perfil</span>
               </ButtonBase>
@@ -44,7 +55,7 @@ export default function BottomNav() {
         </nav>
       </div >
       <Drawer
-        open={openUser}
+        open={openDraw === 'perfil'}
         onClose={handleClose}
         anchor='bottom'
         PaperProps={{

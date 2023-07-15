@@ -4,24 +4,21 @@ import { MdClose } from 'react-icons/md';
 import Sacola from '../Sacola';
 import { useSacolaContext } from '@/common/context/sacola';
 import useMobile from '@/common/hooks/useMobile';
+import { useOpenContext } from '@/common/context/open';
 
-interface SacolaDrawerProps {
-  openMenu: boolean;
-  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function SacolaDrawer({ openMenu, setOpenMenu }: SacolaDrawerProps) {
+export default function SacolaDrawer() {
+  const { openDraw, setOpenDraw } = useOpenContext();
   const { sacola } = useSacolaContext();
   const isMobile = useMobile();
 
   const handleClose = () => {
-    setOpenMenu(false)
+    setOpenDraw(null)
   };
 
   return (
     <Drawer
       anchor={isMobile ? 'bottom' : 'right'}
-      open={openMenu}
+      open={openDraw === 'sacola'}
       onClose={handleClose}
       PaperProps={{
         sx: {
@@ -34,7 +31,7 @@ export default function SacolaDrawer({ openMenu, setOpenMenu }: SacolaDrawerProp
       }}
     >
       <Stack gap={2} flexGrow={1} py={2}>
-        <div style={{ textAlign: isMobile ? 'right' : 'left', marginLeft:'-.5em',marginTop:'-.5em' }}>
+        <div style={{ textAlign: isMobile ? 'right' : 'left', marginLeft: '-.5em', marginTop: '-.5em' }}>
           <IconButton onClick={handleClose}>
             <MdClose />
           </IconButton>
