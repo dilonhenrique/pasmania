@@ -20,6 +20,7 @@
       justify-content: space-evenly;
     }
 
+    
     .bottomNavLink a,
     .bottomNavLink button {
       padding: 10px;
@@ -31,7 +32,20 @@
       opacity: 0.7;
       transition: 250ms;
 
-      &:hover {
+      &:global(.active) {
+        .bottomNavLink__label::after {
+          content: '';
+          width: 20px;
+          position: absolute;
+          bottom: 5px;
+          left: 50%;
+          transform: translateX(-50%);
+          border-bottom: #F7BA00 solid 2px;
+        }
+      }
+
+      &:hover,
+      &:global(.active) {
         opacity: 1;
       }
 
