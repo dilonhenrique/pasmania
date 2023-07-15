@@ -1,6 +1,5 @@
 import React from 'react';
-import { List, ListItem, ListItemButton, ListItemIcon, MenuItem as MenuItemMui, Typography, styled } from '@mui/material';
-import { useClienteContext } from '@/common/context/cliente';
+import { ListItemIcon, MenuItem as MenuItemMui, styled } from '@mui/material';
 import { TbUserEdit, TbMapPin, TbReceipt } from 'react-icons/tb';
 import { useOpenContext } from '@/common/context/open';
 
@@ -17,18 +16,14 @@ const MenuItem = styled(MenuItemMui)(() => ({
 
 export default function UserMenu() {
   const { setOpenDraw } = useOpenContext();
-  const { cliente } = useClienteContext();
 
-  function handleClose(){
+  function handleClose() {
     setOpenDraw(null);
   }
 
   return (
     <div>
       <>
-        <ListItem sx={{ mt: 1 }}>
-          <Typography variant='h4'>Olá, {cliente.nome}</Typography>
-        </ListItem>
         <MenuItem onClick={handleClose}>
           <Icon>
             <TbUserEdit />

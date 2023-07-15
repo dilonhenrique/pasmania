@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './BottomNav.module.scss';
-import { ButtonBase, Drawer, IconButton, List, Slide, Stack } from '@mui/material';
+import { ButtonBase, Drawer, List, ListItem, Slide } from '@mui/material';
 import { TbToolsKitchen2, TbSearch, TbReceipt, TbUser } from 'react-icons/tb';
 import UserMenu from '@/components/elements/UserMenu';
-import { MdClose } from 'react-icons/md';
 import useMobile from '@/common/hooks/useMobile';
 import SacolaMobile from '@/components/elements/SacolaMobile';
 import { useSacolaContext } from '@/common/context/sacola';
 import { useOpenContext } from '@/common/context/open';
 import { useRouter } from 'next/router';
+import DrawerTitle from '@/components/elements/DrawerTitle';
+import { useClienteContext } from '@/common/context/cliente';
 
 export default function BottomNav() {
   const isMobile = useMobile();
   const { openDraw, setOpenDraw } = useOpenContext();
   const { sacola } = useSacolaContext();
+  const { cliente } = useClienteContext();
   const router = useRouter();
 
   function handleClose() {
@@ -50,7 +52,7 @@ export default function BottomNav() {
               </ButtonBase>
             </li>
             <li className={styles.bottomNavLink}>
-              <ButtonBase onClick={() => setOpenDraw('perfil')}  className={openDraw === 'perfil' && 'active'}>
+              <ButtonBase onClick={() => setOpenDraw('perfil')} className={openDraw === 'perfil' && 'active'}>
                 <TbUser size={30} />
                 <span className={styles.bottomNavLink__label}>Perfil</span>
               </ButtonBase>
@@ -66,12 +68,10 @@ export default function BottomNav() {
           sx: { height: '100%' }
         }}
       >
-        <Stack sx={{ flexDirection: 'row', justifyContent: 'flex-end', px: '2rem', marginBottom: '-1rem' }}>
-          <IconButton onClick={handleClose}>
-            <MdClose />
-          </IconButton>
-        </Stack>
         <List disablePadding>
+          <ListItem sx={{ mt: 1 }}>
+            <DrawerTitle handleClose={handleClose}>Olá, {cliente.nome}</DrawerTitle>
+          </ListItem>
           <UserMenu />
         </List>
       </Drawer>

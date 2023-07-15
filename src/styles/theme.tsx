@@ -22,7 +22,12 @@ const theme = createTheme({
       fontSize: '22px',
       color: '#858585',
     },
-    h5: { fontWeight: 700 },
+    h5: {
+      fontWeight: 300,
+      textTransform: 'uppercase',
+      fontSize: '14px',
+      color: '#858585',
+    },
     h6: { fontWeight: 700 },
   },
   palette: {
@@ -81,7 +86,24 @@ const theme = createTheme({
           paddingBottom: '4.5rem',
         }
       }
-    }
+    },
+    //default X padding for listing
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          paddingRight: '2rem',
+          paddingLeft: '2rem',
+        }
+      }
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          paddingRight: '2rem',
+          paddingLeft: '2rem',
+        }
+      }
+    },
   },
 })
 

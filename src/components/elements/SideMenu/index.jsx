@@ -7,7 +7,7 @@ import { useOpenContext } from '@/common/context/open';
 
 const Icon = styled(ListItemIcon)(({ theme }) => ({
   color: theme.palette.secondary.main,
-  minWidth: 0,
+  minWidth: '0!important',
   marginRight: 15,
   justifyContent: 'flex-end',
   'svg': {

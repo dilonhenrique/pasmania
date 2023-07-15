@@ -18,14 +18,6 @@ export default function Sacola({ sacola }: SacolaProps) {
   return (
     <div className={styles.sacolaContainer}>
       <div>
-        <Stack>
-          <Typography variant='h3' color='secondary'>Sua sacola:</Typography>
-          {/* <Tooltip title='Limpar sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
-              <IconButton color='error' onClick={emptySacola}>
-                <TbPaperBagOff />
-              </IconButton>
-            </Tooltip> */}
-        </Stack>
         <TransitionGroup>
           {sacola.map(item => {
             return (

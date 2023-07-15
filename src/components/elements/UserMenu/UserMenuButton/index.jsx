@@ -35,9 +35,9 @@ export default function UserMenuButton() {
           }}
           open={openDraw === 'perfil'}
           onClose={handleClose}
-          MenuListProps={{
-            disablePadding: true
-          }}
+          // MenuListProps={{
+          //   disablePadding: true
+          // }}
         >
           <UserMenu handleClose={handleClose} />
         </Menu>

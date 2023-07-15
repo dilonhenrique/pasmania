@@ -5,6 +5,7 @@ import Sacola from '../Sacola';
 import { useSacolaContext } from '@/common/context/sacola';
 import useMobile from '@/common/hooks/useMobile';
 import { useOpenContext } from '@/common/context/open';
+import DrawerTitle from '@/components/elements/DrawerTitle';
 
 export default function SacolaDrawer() {
   const { openDraw, setOpenDraw } = useOpenContext();
@@ -17,12 +18,13 @@ export default function SacolaDrawer() {
 
   return (
     <Drawer
+      disableScrollLock
       anchor={isMobile ? 'bottom' : 'right'}
       open={openDraw === 'sacola'}
       onClose={handleClose}
       PaperProps={{
         sx: {
-          px: isMobile ? '2rem' : '3rem',
+          px: '2rem',
           width: '500px',
           maxWidth: '100%',
           height: '100%',
@@ -31,11 +33,7 @@ export default function SacolaDrawer() {
       }}
     >
       <Stack gap={2} flexGrow={1} py={2}>
-        <div style={{ textAlign: isMobile ? 'right' : 'left', marginLeft: '-.5em', marginTop: '-.5em' }}>
-          <IconButton onClick={handleClose}>
-            <MdClose />
-          </IconButton>
-        </div>
+        <DrawerTitle handleClose={handleClose}>Minha sacola</DrawerTitle>
         {sacola.length
           ? <Sacola sacola={sacola} />
           : <>Nenhum item na sua sacola :(</>
