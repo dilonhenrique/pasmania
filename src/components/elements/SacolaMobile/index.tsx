@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from 'react';
 import useValorSacola from '@/common/hooks/useValorSacola';
-import Checkout from '@/components/patterns/Checkout';
+import SacolaDrawer from '@/components/patterns/SacolaDrawer';
 import { Badge, Button, styled } from '@mui/material';
 import { TbPaperBag } from 'react-icons/tb';
 import styles from './Sacola.module.scss';
@@ -59,7 +59,7 @@ const SacolaMobile = forwardRef<HTMLDivElement, SacolaMobileProps>(({ sacola }, 
         <p>Ver sacola</p>
         <p><small>R$</small> {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).slice(3)}</p>
       </StyledButton>
-      <Checkout openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <SacolaDrawer openMenu={openMenu} setOpenMenu={setOpenMenu} />
     </div>
   )
 })

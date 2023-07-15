@@ -4,7 +4,7 @@ import useRestaurantStatus from '@/common/hooks/useRestaurantStatus';
 
 export default function Status() {
   const status = useRestaurantStatus();
-  const semana = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+  const semana = ['dom.', 'seg.', 'ter.', 'qua.', 'qui.', 'sex.', 'sab.'];
 
   return (
     <div>
@@ -15,7 +15,7 @@ export default function Status() {
         </p>
         : <p>
           <Typography component='span' sx={{ color: theme => theme.palette.error.light }}>&#9679;</Typography>
-          <strong> Fechado</strong> abre{status.nextEvent.day ? ` ${semana[status.nextEvent.day]}` : ''} às {status.nextEvent.time?.slice(0, -3)}
+          <strong> Fechado</strong> abre{'day' in status.nextEvent ? ` ${semana[status.nextEvent.day]}` : ''} às {status.nextEvent.time?.slice(0, -3)}
         </p>
       }
     </div>

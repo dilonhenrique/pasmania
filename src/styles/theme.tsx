@@ -14,7 +14,7 @@ const theme = createTheme({
     h3: {
       fontWeight: 300,
       textTransform: 'uppercase',
-      fontSize: '20px',
+      fontSize: '18px',
       color: '#858585',
     },
     h4: { fontWeight: 700 },
@@ -64,6 +64,17 @@ const theme = createTheme({
           color: theme.palette.grey[600],
           fontWeight: 300,
         })
+      }
+    },
+    MuiDrawer: {
+      styleOverrides:{
+        root:{
+          zIndex: 18,
+        },
+        paper:{
+          paddingTop: '4rem',
+
+        }
       }
     }
   },

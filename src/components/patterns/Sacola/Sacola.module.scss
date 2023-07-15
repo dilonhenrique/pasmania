@@ -1,12 +1,21 @@
-.title {
+.sacolaContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  flex-direction: row;
+  flex-grow: 1;
+  gap: 2rem;
 }
-// .product {
-//   padding: 0 0.5rem;
 
-//   &:nth-child(odd) {
-//     background-color: #f9f9f9;
-//   }
-// }
+.sacolaLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  min-height: 1.8rem;
+
+  &>:first-child {
+    flex-grow: 1;
+  }
+}

@@ -4,6 +4,7 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { useMenuContext } from '@/common/context/menu';
 import ButtonChoice from '@/components/elements/ButtonChoice';
 import { MdOutlineSportsMotorsports, MdDirectionsWalk } from 'react-icons/md';
+import useRestaurantStatus from '@/common/hooks/useRestaurantStatus';
 
 export default function DeliveryMode() {
   const { menu } = useMenuContext();
@@ -20,6 +21,7 @@ export default function DeliveryMode() {
 
   const modoEntrega = localStorage.getItem('pasmania-entregaMode') || 'delivery';
   const [openModal, setOpenModal] = useState(false);
+  const { isOpen } = useRestaurantStatus();
 
   function setEntregaMode(mode) {
     localStorage.setItem('pasmania-entregaMode', mode);
@@ -41,8 +43,12 @@ export default function DeliveryMode() {
           }
         }}
         onClick={() => setOpenModal(true)}
+        disabled={!isOpen}
       >
-        <strong>{modoEntrega === 'delivery' ? 'Entrega' : 'Retirada'}</strong> - {temposEntrega[modoEntrega].min} a {temposEntrega[modoEntrega].max} min
+        {isOpen
+          ? <><strong>{modoEntrega === 'delivery' ? 'Entrega' : 'Retirada'}</strong> - {temposEntrega[modoEntrega].min} a {temposEntrega[modoEntrega].max} min</>
+          : <strong>Somente programada</strong>
+        }
       </Button>
       <Dialog
         open={openModal}

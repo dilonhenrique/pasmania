@@ -56,3 +56,8 @@ export interface ICliente {
   nome: string,
   telefone: string,
 }
+
+export interface ICupom {
+  name?: string;
+  discount?: number;
+}

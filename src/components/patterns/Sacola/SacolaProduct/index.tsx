@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SacolaProduct.module.scss';
+import styles from '../Sacola.module.scss';
 import { useSacolaContext } from '@/common/context/sacola';
 import { ISacolaProduct } from '@/common/interfaces/interfaces';
 import { TiDelete } from 'react-icons/ti';
@@ -20,7 +20,7 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
   }
 
   return (
-    <div className={styles.productContainer}>
+    <div className={styles.sacolaLine}>
       <div>
         <h4>{product.product}</h4>
       </div>
