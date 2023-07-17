@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IProduct } from '@/common/interfaces/interfaces';
-import { Button, Divider, FormGroup, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { Button, FormGroup, IconButton, Stack, TextField, Typography } from '@mui/material';
 import styles from './ProductPage.module.scss';
 import { HiCurrencyDollar, HiMinus, HiPlus } from 'react-icons/hi';
 import { TiPlusOutline } from 'react-icons/ti';
@@ -40,7 +40,14 @@ export default function ProductPage({ product }: ProductPageProps) {
         </div>
         <div className={styles.productActions}>
           <TextField fullWidth label='Observações' />
-          <Stack direction='row' gap={3} justifyContent='flex-end'>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              gap: 3,
+              flexWrap: 'wrap',
+            }}
+          >
             <FormGroup row>
               <IconButton disabled={qtd < 2} onClick={diminuirQtd}><HiMinus /></IconButton>
               <TextField
@@ -56,7 +63,7 @@ export default function ProductPage({ product }: ProductPageProps) {
               variant='contained'
               color='secondary'
               size='large'
-              sx={{ minWidth: '250px' }}
+              sx={{ width: '250px', maxWidth: '100%' }}
               startIcon={<TiPlusOutline />}
               onClick={() => addItemSacola(product, qtd)}
             >

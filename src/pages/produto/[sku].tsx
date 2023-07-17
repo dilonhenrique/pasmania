@@ -9,16 +9,18 @@ import ProductPage from '@/components/patterns/ProductPage';
 
 export default function Product() {
   const { menu } = useMenuContext();
-  const router = useRouter();
 
+  if (menu.isLoading) return;
+
+  const router = useRouter();
   const product = getProduct();
 
-  function getProduct(){
+  function getProduct() {
     let retorno = undefined as IProduct | undefined;
     menu?.menu?.forEach((categoria: ICategory) => {
-      if(retorno !== undefined) return;
+      if (retorno !== undefined) return;
       categoria.products.forEach(item => {
-        if(String(item.sku) === router.query.sku){
+        if (String(item.sku) === router.query.sku) {
           retorno = item;
         }
       })
