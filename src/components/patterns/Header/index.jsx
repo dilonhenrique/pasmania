@@ -7,6 +7,7 @@ import SacolaButton from '@/components/elements/SacolaButton';
 import styles from './Header.module.scss';
 import { useTheme } from '@emotion/react';
 import useMobile from '@/common/hooks/useMobile';
+import Link from 'next/link';
 
 export default function Header() {
   const theme = useTheme();
@@ -15,9 +16,11 @@ export default function Header() {
   return (
     <header className={styles.header} style={{ backgroundColor: theme.palette.secondary.main }}>
       <div className='container'>
-        <div className={ `${styles.iconContainer} ${isMobile ? styles.mobile : ''}`}>
+        <div className={`${styles.iconContainer} ${isMobile ? styles.mobile : ''}`}>
           <SideMenu />
-          <PasmaniaLogo />
+          <Link href='/' aria-label='Acessar cardápio'>
+            <PasmaniaLogo />
+          </Link>
         </div>
         {!isMobile &&
           <>

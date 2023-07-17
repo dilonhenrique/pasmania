@@ -28,6 +28,7 @@ export interface IProduct {
 
 export interface ISacolaProduct extends IProduct {
   id: string;
+  qtd?: number;
 }
 
 export interface IPedido {

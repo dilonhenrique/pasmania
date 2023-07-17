@@ -33,9 +33,9 @@ export function SacolaProvider({ children }: SacolaProviderProps) {
 export function useSacolaContext() {
   const { sacola, setSacola } = useContext(SacolaContext) as SacolaContextProps;
 
-  function addItemSacola(product: IProduct) {
+  function addItemSacola(product: IProduct, qtd:number = 1) {
     setSacola((sacolaAtual) => {
-      const novaSacola = [...sacolaAtual, { ...product, id: uuid() }]
+      const novaSacola = [...sacolaAtual, { ...product, id: uuid(), qtd }]
       localStorage.setItem(keySacola, JSON.stringify(novaSacola));
       return novaSacola;
     });

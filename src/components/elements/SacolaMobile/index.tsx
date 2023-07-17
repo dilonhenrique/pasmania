@@ -42,7 +42,7 @@ const SacolaMobile = forwardRef<HTMLDivElement, SacolaMobileProps>(({ sacola }, 
 
   return (
     <div className={styles.sacolaContainer} ref={ref}>
-      <StyledButton onClick={handleOpen} fullWidth>
+      <StyledButton onClick={handleOpen} fullWidth aria-label='Sacola de compras'>
         <Badge
           badgeContent={sacola.length}
           sx={{

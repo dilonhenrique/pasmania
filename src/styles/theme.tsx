@@ -3,7 +3,7 @@ import { createTheme, LinkProps as MuiLinkProps, Theme, Typography } from "@mui/
 
 const theme = createTheme({
   typography: {
-    fontFamily: "'Open-sans', sans-serif",
+    fontFamily: '"Open Sans", sans-serif',
     h1: { fontWeight: 700 },
     h2: {
       fontWeight: 300,

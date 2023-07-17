@@ -5,7 +5,7 @@ import { ICupom } from "../interfaces/interfaces";
 
 export default function useValorSacola(){
   const { sacola } = useSacolaContext();
-  const produtos = sacola.reduce((soma, item) => soma = soma + item?.price, 0);
+  const produtos = sacola.reduce((soma, item) => soma = soma + (item?.price * (item.qtd || 1)), 0);
 
   const cashback = typeof localStorage === 'undefined' ? 0 : Number(localStorage.getItem('pasmania-cashback')) || 0;
   

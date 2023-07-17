@@ -34,7 +34,7 @@ export default function SideMenu() {
 
   return (
     <>
-      <IconButton onClick={handleOpen}>
+      <IconButton onClick={handleOpen} aria-label='Menu de mais informações sobre a empresa'>
         <TbMenu2 />
       </IconButton>
       <Drawer

@@ -51,7 +51,7 @@ export default function SacolaButton() {
 
   return (
     <div>
-      <StyledButton onClick={handleOpen} color='secondary' className={sacola.length ? 'withProduct' : ''}>
+      <StyledButton onClick={handleOpen} color='secondary' className={sacola.length ? 'withProduct' : ''} aria-label='Sacola de compras'>
         <Badge
           badgeContent={sacola.length}
           color="secondary"

@@ -18,7 +18,7 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
         <h4>{product.product}</h4>
       </div>
       <div>
-        <p>{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+        <p>{product.qtd && product.qtd > 1 ? `${product.qtd}x ` : ''}{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
       </div>
       <div>
         <Tooltip title='Tirar da sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
