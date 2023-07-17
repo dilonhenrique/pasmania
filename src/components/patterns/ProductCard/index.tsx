@@ -67,7 +67,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
         <div className={styles.productPhoto}>
-          <img src={product.image} alt={product.description} />
+          <img src={product.image} alt={product.description} loading='lazy' />
         </div>
       </ProductContainer>
     </li>
