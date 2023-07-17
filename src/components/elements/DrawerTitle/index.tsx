@@ -17,7 +17,7 @@ export default function DrawerTitle({ children, handleClose, action }: DrawerTit
     <div className={styles.titleContainer}>
       <div>
         {handleClose &&
-          <IconButton onClick={handleClose} sx={{ mx: '-.5em' }}>
+          <IconButton onClick={handleClose} edge='start'>
             {isMobile ? <MdKeyboardArrowDown /> : <MdClose />}
           </IconButton>}
       </div>

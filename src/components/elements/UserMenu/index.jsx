@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListItemIcon, MenuItem as MenuItemMui, styled } from '@mui/material';
-import { TbUserEdit, TbMapPin, TbReceipt } from 'react-icons/tb';
+import { TbUserEdit, TbMapPin, TbReceipt, TbHeart, TbLogout } from 'react-icons/tb';
 import { useOpenContext } from '@/common/context/open';
 
 const Icon = styled(ListItemIcon)(({ theme }) => ({
@@ -12,6 +12,7 @@ const MenuItem = styled(MenuItemMui)(() => ({
   fontSize: 18,
   paddingTop: '1rem',
   paddingBottom: '1rem',
+  paddingRight: '3rem',
 }))
 
 export default function UserMenu() {
@@ -26,21 +27,33 @@ export default function UserMenu() {
       <>
         <MenuItem onClick={handleClose}>
           <Icon>
-            <TbUserEdit />
-          </Icon>
-          Meus dados
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Icon>
             <TbReceipt />
           </Icon>
           Meus pedidos
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Icon>
+            <TbHeart />
+          </Icon>
+          Favoritos
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Icon>
             <TbMapPin />
           </Icon>
           Meus endereços
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Icon>
+            <TbUserEdit />
+          </Icon>
+          Meus dados
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Icon>
+            <TbLogout />
+          </Icon>
+          Sair
         </MenuItem>
       </>
     </div>
