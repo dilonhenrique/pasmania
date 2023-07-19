@@ -40,7 +40,7 @@ export default function BottomNav() {
               </ButtonBase>
             </li>
             <li className={styles.bottomNavLink}>
-              <ButtonBase href='/buscar' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/buscar' ? 'active' : ''}>
+              <ButtonBase href='/busca' onClick={handleClose} className={!isOpenDrawPageLike && router.asPath === '/busca' ? 'active' : ''}>
                 <TbSearch size={30} />
                 <span className={styles.bottomNavLink__label}>Busca</span>
               </ButtonBase>

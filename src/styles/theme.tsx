@@ -9,18 +9,18 @@ const theme = createTheme({
       fontWeight: 300,
       textTransform: 'uppercase',
       fontSize: '24px',
-      color: '#858585',
+      color: '#6a6a6a',
     },
     h3: {
       fontWeight: 300,
       textTransform: 'uppercase',
       fontSize: '18px',
-      color: '#858585',
+      color: '#6a6a6a',
     },
     h4: {
-      fontWeight: 200,
+      fontWeight: 300,
       fontSize: '22px',
-      color: '#858585',
+      color: '#6a6a6a',
     },
     h5: {
       fontWeight: 300,

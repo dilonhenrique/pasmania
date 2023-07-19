@@ -1,7 +1,4 @@
 import Head from 'next/head';
-import Banner from '@/components/patterns/Banner';
-import ProductList from '@/components/patterns/ProductList';
-import RestaurantStatus from '@/components/patterns/RestaurantStatus';
 import { useMenuContext } from '@/common/context/menu';
 import { useRouter } from 'next/router';
 import { ICategory, IProduct } from '@/common/interfaces/interfaces';

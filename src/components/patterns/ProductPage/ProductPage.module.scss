@@ -1,6 +1,6 @@
 .productContainer {
-  padding-top: 2rem;
-  padding-bottom: 150px;
+  // padding-top: 2rem;
+  // padding-bottom: 150px;
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
@@ -12,9 +12,10 @@
   .productPhoto {
     border-radius: 8px;
     width: 350px;
-    height: 350px;
     overflow: hidden;
     flex-shrink: 0;
+    max-width: 100%;
+    aspect-ratio: 1/1;
 
     img {
       width: 100%;

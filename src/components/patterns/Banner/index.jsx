@@ -3,13 +3,11 @@ import { useMenuContext } from '@/common/context/menu';
 import AwesomeSlider from 'react-awesome-slider';
 import AwesomeSliderStyles from 'react-awesome-slider/src/core/styles.scss';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
-import useMobile from '@/common/hooks/useMobile';
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 export default function Banner() {
   const { menu } = useMenuContext();
-  const isMobile = useMobile();
 
   return (
     <section className='container mobileFull'>
@@ -23,7 +21,7 @@ export default function Banner() {
           interval={6000}
         >
           {menu.frontImage.map((image, index) => (
-            <div key={index} data-src={image} />
+            <div key={index} data-src={image} data-alt='Banner promocional' />
           ))}
         </AutoplaySlider>}
     </section>
