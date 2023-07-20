@@ -50,7 +50,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                 variant='contained'
                 size='large'
                 disableElevation
-                onClick={() => addItemSacola(product)}
+                onMouseDown={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.preventDefault();
+                  addItemSacola(product);
+                }}
                 aria-label={`Adicionar ${product.product} a sacola de compras`}
                 sx={{
                   minWidth: 0,
