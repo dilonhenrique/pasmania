@@ -74,6 +74,10 @@ img {
 main {
   padding-top: 4rem;
   padding-bottom: 150px;
+  
+  &.contentfull {
+    padding-top: 4.5rem;
+  }
 }
 
 /* Chrome, Safari, Edge, Opera */

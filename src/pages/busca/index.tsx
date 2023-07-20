@@ -31,7 +31,7 @@ export default function Search() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main style={{paddingTop:'4.5rem'}}>
+      <main className='contentfull'>
         {isMobile && <SearchBarMobile />}
         <ProductList search={menuFiltrado} />
       </main>

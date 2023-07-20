@@ -31,10 +31,11 @@ export interface ISacolaProduct extends IProduct {
   qtd?: number;
 }
 
-export interface IPedido {
+export interface IOrder {
   id: string;
-  quantity: number;
-  sku: string;
+  products: ISacolaProduct[];
+  date: string;
+  status: 'analisando pedido' | 'em rota de entrega' | 'pronto para retirada' | 'entregue' | 'cancelado';
 }
 
 export interface IEndereco {

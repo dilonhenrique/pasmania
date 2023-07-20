@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { IProduct, ISacolaProduct } from "../interfaces/interfaces";
 import { v4 as uuid } from 'uuid';
 
@@ -23,6 +23,15 @@ export function SacolaProvider({ children }: SacolaProviderProps) {
     getSacola();
   }, [])
 
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      localStorage.setItem(keySacola, JSON.stringify(sacola));
+    }
+  }, [sacola]);
+
   return (
     <SacolaContext.Provider value={{ sacola, setSacola }}>
       {children}
@@ -33,20 +42,12 @@ export function SacolaProvider({ children }: SacolaProviderProps) {
 export function useSacolaContext() {
   const { sacola, setSacola } = useContext(SacolaContext) as SacolaContextProps;
 
-  function addItemSacola(product: IProduct, qtd:number = 1) {
-    setSacola((sacolaAtual) => {
-      const novaSacola = [...sacolaAtual, { ...product, id: uuid(), qtd }]
-      localStorage.setItem(keySacola, JSON.stringify(novaSacola));
-      return novaSacola;
-    });
+  function addItemSacola(product: IProduct, qtd: number = 1) {
+    setSacola((sacolaAtual) => [...sacolaAtual, { ...product, id: uuid(), qtd }]);
   }
 
   function removeItemSacola(id: string) {
-    setSacola(sacolaAtual => {
-      const novaSacola = sacolaAtual.filter(item => item.id !== id);
-      localStorage.setItem(keySacola, JSON.stringify(novaSacola));
-      return novaSacola;
-    })
+    setSacola(sacolaAtual => sacolaAtual.filter(item => item.id !== id))
   }
 
   function emptySacola() {

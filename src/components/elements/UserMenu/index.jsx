@@ -2,6 +2,7 @@ import React from 'react';
 import { ListItemIcon, MenuItem as MenuItemMui, styled } from '@mui/material';
 import { TbUserEdit, TbMapPin, TbReceipt, TbHeart, TbLogout } from 'react-icons/tb';
 import { useOpenContext } from '@/common/context/open';
+import Link from 'next/link';
 
 const Icon = styled(ListItemIcon)(({ theme }) => ({
   color: theme.palette.secondary.main,
@@ -25,7 +26,7 @@ export default function UserMenu() {
   return (
     <div>
       <>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} href='/pedidos' component={Link}>
           <Icon>
             <TbReceipt />
           </Icon>

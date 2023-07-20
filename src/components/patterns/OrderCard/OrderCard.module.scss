@@ -1,0 +1,46 @@
+  .orderInfos {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .orderName {
+      margin-bottom: .5rem;
+    }
+
+    .orderStatus {
+      color: #c5c5c5;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .orderBottom {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid lightgray;
+    }
+
+    .orderProducts{
+      line-height: 1.5em;
+    }
+
+    .orderQuickAdd {
+      margin-top: 1rem;
+      text-align: right;
+    }
+  }
+
+  .orderPhoto {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 5px;
+
+    img {
+      max-width: unset;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }

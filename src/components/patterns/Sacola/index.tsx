@@ -14,7 +14,7 @@ interface SacolaProps {
 
 export default function Sacola({ sacola }: SacolaProps) {
   const { cashback, cupom, subtotal, frete, total } = useValorSacola();
-
+console.log(sacola)
   return (
     <div className={styles.sacolaContainer}>
       <div>
