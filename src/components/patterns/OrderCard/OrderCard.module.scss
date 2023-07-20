@@ -4,6 +4,15 @@
     flex-direction: column;
     justify-content: space-between;
 
+    .orderHeader {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .orderIcon {
+      color: #F7BA00;
+    }
+
     .orderName {
       margin-bottom: .5rem;
     }

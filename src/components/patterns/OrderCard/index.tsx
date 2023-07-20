@@ -5,6 +5,7 @@ import { Button, ButtonBase, ButtonBaseProps, styled } from '@mui/material';
 import { useSacolaContext } from '@/common/context/sacola';
 import { LinkProps } from 'next/link';
 import { useMenuContext } from '@/common/context/menu';
+import { CiReceipt } from 'react-icons/ci';
 
 interface OrderCardProps {
   order: IOrder;
@@ -28,17 +29,17 @@ export default function OrderCard({ order }: OrderCardProps) {
   const { addItemSacola } = useSacolaContext();
   const { menu } = useMenuContext();
 
-  function repetirPedido(products:ISacolaProduct[]){
-    const updatedProducts = products.reduce((array:ISacolaProduct[], produto:ISacolaProduct) => {
-      let novoProd:IProduct | undefined = undefined;
-      
-      menu.menu.forEach((categoria:ICategory) =>{
-        if(novoProd === undefined){
+  function repetirPedido(products: ISacolaProduct[]) {
+    const updatedProducts = products.reduce((array: ISacolaProduct[], produto: ISacolaProduct) => {
+      let novoProd: IProduct | undefined = undefined;
+
+      menu.menu.forEach((categoria: ICategory) => {
+        if (novoProd === undefined) {
           novoProd = categoria.products.find(item => item.sku === produto.sku);
         } else { return }
       })
 
-      if(novoProd) {
+      if (novoProd) {
         array.push(novoProd);
         addItemSacola(novoProd, produto.qtd);
       } else {
@@ -52,15 +53,20 @@ export default function OrderCard({ order }: OrderCardProps) {
     <li>
       <OrderContainer href={`/pedidos/${order.id}`}>
         <div className={styles.orderInfos}>
-          <div>
-            <h3 className={styles.orderName}>{new Date(order.date).toLocaleDateString('pt-BR', { dateStyle: 'long' })}</h3>
-            <p className={styles.orderStatus}>{order.status}</p>
+          <div className={styles.orderHeader}>
+            <div className={styles.orderIcon}>
+              <CiReceipt color='inherit' size={45} />
+            </div>
+            <div>
+              <h3 className={styles.orderName}>{new Date(order.date).toLocaleDateString('pt-BR', { dateStyle: 'long' })}</h3>
+              <p className={styles.orderStatus}>{order.status}</p>
+            </div>
           </div>
           <div className={styles.orderBottom}>
             <div className={styles.orderProducts}>
               {order.products?.map((produto, index) => {
-                if(index === 2) return <p><em>mais {order.products.length - 2}...</em></p>;
-                if(index > 2) return;
+                if (index === 2) return <p><em>mais {order.products.length - 2}...</em></p>;
+                if (index > 2) return;
                 return (
                   <p>{produto.qtd && produto.qtd > 1 ? `${produto.qtd}x` : ''} {produto.product}</p>
                 )
