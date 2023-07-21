@@ -68,7 +68,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                 if (index === 2) return <p><em>mais {order.products.length - 2}...</em></p>;
                 if (index > 2) return;
                 return (
-                  <p>{produto.qtd && produto.qtd > 1 ? `${produto.qtd}x` : ''} {produto.product}</p>
+                  <p><span>{produto.qtd || 1}</span> {produto.product}</p>
                 )
               })}
             </div>

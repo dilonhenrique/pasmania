@@ -15,10 +15,10 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
   return (
     <div className={styles.sacolaLine}>
       <div>
-        <h4>{product.product}</h4>
+        <h4><span className={styles.sacolaQtd}>{product.qtd || 1}</span> {product.product}</h4>
       </div>
       <div>
-        <p>{product.qtd && product.qtd > 1 ? `${product.qtd}x ` : ''}{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+        <p>{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
       </div>
       <div>
         <Tooltip title='Tirar da sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>

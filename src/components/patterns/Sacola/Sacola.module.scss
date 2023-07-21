@@ -15,6 +15,14 @@
   gap: 1rem;
   min-height: 1.8rem;
 
+  .sacolaQtd {
+    background-color: #ececec;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.8em;
+  }
+
   &>:first-child {
     flex-grow: 1;
   }

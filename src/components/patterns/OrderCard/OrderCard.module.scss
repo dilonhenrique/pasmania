@@ -6,6 +6,7 @@
 
     .orderHeader {
       display: flex;
+      align-items: center;
       gap: .5rem;
     }
 
@@ -14,23 +15,32 @@
     }
 
     .orderName {
-      margin-bottom: .5rem;
+      margin-bottom: .3rem;
     }
 
     .orderStatus {
-      color: #c5c5c5;
       font-weight: 400;
       font-style: italic;
     }
-
+    
     .orderBottom {
       margin-top: 1rem;
       padding-top: 1rem;
       border-top: 1px solid lightgray;
     }
-
+    
     .orderProducts{
+      color: #aeaeae;
       line-height: 1.5em;
+
+      span {
+        background-color: #ececec;
+        padding: 0 4px;
+        border-radius: 3px;
+        color: #212121;
+        font-weight: 700;
+        font-size: 0.8em;
+      }
     }
 
     .orderQuickAdd {
