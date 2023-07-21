@@ -1,0 +1,100 @@
+.orderContainer {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 400px;
+
+  @media (max-width:800px){
+    grid-template-columns: 1fr 300px;
+  }
+
+  @media (max-width:600px){
+    grid-template-columns: 1fr;
+  }
+}
+
+.orderInfos {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .orderHeader {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .orderIcon {
+    color: #F7BA00;
+  }
+
+  .orderName {
+    margin-bottom: .3rem;
+  }
+
+  .orderStatus {
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .orderBottom {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid lightgray;
+  }
+
+  .orderProducts {
+    color: #aeaeae;
+    line-height: 2em;
+
+    span {
+      background-color: #ececec;
+      padding: 0 4px;
+      border-radius: 3px;
+      color: #212121;
+      font-weight: 700;
+      font-size: 0.8em;
+    }
+  }
+
+  .orderQuickAdd {
+    margin-top: 2rem;
+  }
+}
+
+.orderPhoto {
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 5px;
+
+  img {
+    max-width: unset;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.orderValues {
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  align-self: flex-start;
+
+  .orderLine {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.8em 0;
+
+    &> div:first-child {
+      flex-grow: 1;
+    }
+
+    &:last-child {
+      font-size: 1.2em;
+      margin-top: 2em;
+    }
+  }
+}

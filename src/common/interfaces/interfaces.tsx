@@ -36,6 +36,13 @@ export interface IOrder {
   products: ISacolaProduct[];
   date: string;
   status: 'analisando pedido' | 'em rota de entrega' | 'pronto para retirada' | 'entregue' | 'cancelado';
+  values: {
+    cashback: number;
+    cupom?: ICupom;
+    subtotal: number;
+    frete: number;
+    total: number;
+  }
 }
 
 export interface IEndereco {

@@ -89,6 +89,12 @@ export const myOrders = [
   ],
     date: '2023-07-18T23:02:06',
     status: 'analisando pedido',
+    values: {
+      cashback: 0,
+      subtotal: 60,
+      frete: 7,
+      total: 67,
+    }
   },
   {
     id: '124',
@@ -137,6 +143,12 @@ export const myOrders = [
   ],
     date: '2023-07-10T14:02:06',
     status: 'cancelado',
+    values: {
+      cashback: 0,
+      subtotal: 40.40,
+      frete: 7,
+      total: 47.40,
+    }
   },
   {
     id: '125',
@@ -226,6 +238,12 @@ export const myOrders = [
   ],
     date: '2023-06-21T12:32:06',
     status: 'entregue',
+    values: {
+      cashback: 0,
+      subtotal: 60,
+      frete: 0,
+      total: 60,
+    }
   },
   {
     id: '126',
@@ -253,5 +271,11 @@ export const myOrders = [
   ],
     date: '2023-02-04T23:02:06',
     status: 'entregue',
+    values: {
+      cashback: 0,
+      subtotal: 9,
+      frete: 0,
+      total: 9,
+    }
   },
 ] as IOrder[];

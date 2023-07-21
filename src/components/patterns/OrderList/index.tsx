@@ -1,21 +1,24 @@
 import React from 'react';
 import styles from './OrderList.module.scss';
 import OrderCard from '../OrderCard';
-import { IOrder } from '@/common/interfaces/interfaces';
-import { myOrders } from '@/mock/server';
+import { IOrder } from '@/common/interfaces/interfaces'
 import { Typography } from '@mui/material';
 
-export default function OrderList() {
+interface OrderListProps {
+  orders?: IOrder[];
+}
+
+export default function OrderList({ orders }: OrderListProps) {
   return (
     <>
       <section className='container'>
         <div className={styles.categoryList}>
           <Typography variant='h3'>Meus pedidos</Typography>
-          {myOrders.length
+          {orders?.length
             ? <ul className={styles.productList}>
-              {myOrders?.map((order: IOrder) => <OrderCard key={order.id} order={order} />)}
+              {orders?.map((order: IOrder) => <OrderCard key={order.id} order={order} />)}
             </ul>
-            : <>Busque o produto que quiser...</>}
+            : <>Nenhum histórico de compra encontrado.</>}
         </div>
       </section>
     </>

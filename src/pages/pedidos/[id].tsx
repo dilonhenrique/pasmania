@@ -1,10 +1,10 @@
 import { IOrder } from "@/common/interfaces/interfaces";
-import OrderList from "@/components/patterns/OrderList";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { myOrders } from '@/mock/server';
+import OrderPage from "@/components/patterns/OrderPage";
 
-export default function Orders({ orders }: { orders?: IOrder[] }) {
+export default function Orders({ order }: { order?: IOrder }) {
   return (
     <>
       <Head>
@@ -14,18 +14,20 @@ export default function Orders({ orders }: { orders?: IOrder[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='contentfull'>
-        <OrderList orders={orders} />
+        <OrderPage order={order} />
       </main>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps<{ orders: IOrder[] }> = async (context) => {
+export const getServerSideProps: GetServerSideProps<{ order: IOrder | undefined }> = async (context) => {
+  const id = context.params?.id;
   const orders = myOrders;
+  const order = orders.find(order => order.id === id);
 
   return {
     props: {
-      orders
+      order
     },
   };
 };
