@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Sacola.module.scss';
 import SacolaProduct from './SacolaProduct';
-import { Button, Collapse, Divider, IconButton, Stack, Tooltip, Typography } from '@mui/material';
+import { Button, Collapse, Divider, IconButton } from '@mui/material';
 import { TransitionGroup } from 'react-transition-group';
 import useValorSacola from '@/common/hooks/useValorSacola';
-import { ICupom, ISacolaProduct } from '@/common/interfaces/interfaces';
+import { ISacolaProduct } from '@/common/interfaces/interfaces';
 import { TbEditCircle } from 'react-icons/tb';
 import { RiQuestionLine } from 'react-icons/ri';
-import { useRouter } from 'next/router';
 
 interface SacolaProps {
   sacola: ISacolaProduct[];
