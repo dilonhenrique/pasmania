@@ -8,7 +8,7 @@ import { ICategory } from '@/common/interfaces/interfaces';
 import useMobile from '@/common/hooks/useMobile';
 
 interface ProductListProps {
-  search?: ICategory[];
+  search?: ICategory[] | null;
 }
 
 export default function ProductList({ search }: ProductListProps) {
@@ -22,22 +22,24 @@ export default function ProductList({ search }: ProductListProps) {
     <>
       {(search === undefined || !isMobile) && <ScrollMenu menu={menu.menu} />}
       <section className='container'>
-        {menuFiltrado.length
-          ? menuFiltrado?.map((categoria: ICategory) => {
-            if (!categoria.products?.length) return;
-            return (
-              <div key={categoria.categorySKU} id={String(categoria.categorySKU)} className={styles.categoryList}>
-                <Typography variant='h3'>{categoria.category}</Typography>
-                <ul className={styles.productList}>
-                  {categoria.products && categoria.products.map(produto => (
-                    <ProductCard key={produto.sku} product={produto} />
-                  ))}
-                </ul>
-              </div>
+        {search === null
+          ? <>Busque o produto que quiser...</>
+          : menuFiltrado.length
+            ? menuFiltrado?.map((categoria: ICategory) => {
+              if (categoria.products?.length === 0) return;
+              return (
+                <div key={categoria.categorySKU} id={String(categoria.categorySKU)} className={styles.categoryList}>
+                  <Typography variant='h3'>{categoria.category}</Typography>
+                  <ul className={styles.productList}>
+                    {categoria.products && categoria.products.map(produto => (
+                      <ProductCard key={produto.sku} product={produto} />
+                    ))}
+                  </ul>
+                </div>
+              )
+            }
             )
-          }
-          )
-          : <>Busque o produto que quiser...</>}
+            : <>Nenhum produto encontrado!</>}
       </section>
     </>
   )

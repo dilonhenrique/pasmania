@@ -14,12 +14,13 @@ export default function Search() {
   const isMobile = useMobile();
   const { search } = useSearchContext();
 
-  const menuFiltrado = menu.menu.reduce((filtrado: ICategory[], categoria: ICategory) => {
-    const searchTerm = search.toLowerCase();
-    if (searchTerm === '') return filtrado;
+  const menuFiltrado = menu.menu.reduce((filtrado: ICategory[] | null, categoria: ICategory) => {
+    const searchTerm = search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (searchTerm === '') return null;
 
-    const prodFilter = categoria.products.filter(product => product.product.toLowerCase().includes(searchTerm) || product.description.toLowerCase().includes(searchTerm));
-    filtrado.push({ ...categoria, products: prodFilter });
+    const prodFilter = categoria.products.filter(product => product.product.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(searchTerm) || product.description.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(searchTerm));
+    if(prodFilter.length && filtrado !== null) filtrado.push({ ...categoria, products: prodFilter });
+    
     return filtrado;
   }, []);
 

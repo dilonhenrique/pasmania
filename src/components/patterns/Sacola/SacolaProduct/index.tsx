@@ -18,7 +18,7 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
         <h4><span className={styles.sacolaQtd}>{product.qtd || 1}</span> {product.product}</h4>
       </div>
       <div>
-        <p>{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+        <p>{((product.qtd || 1) * product.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
       </div>
       <div>
         <Tooltip title='Tirar da sacola'>
