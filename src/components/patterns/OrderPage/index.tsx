@@ -22,11 +22,13 @@ export default function OrderPage({ order }: OrderPageProps) {
     const updatedProducts = products.reduce((array: ISacolaProduct[], produto: ISacolaProduct) => {
       let novoProd: IProduct | undefined = undefined;
 
-      menu.menu.forEach((categoria: ICategory) => {
-        if (novoProd === undefined) {
-          novoProd = categoria.products.find(item => item.sku === produto.sku);
-        } else { return }
-      })
+      if (!menu.isLoading) {
+        menu.menu.forEach((categoria: ICategory) => {
+          if (novoProd === undefined) {
+            novoProd = categoria.products.find(item => item.sku === produto.sku);
+          } else { return }
+        })
+      }
 
       if (novoProd) {
         array.push(novoProd);

@@ -14,6 +14,8 @@ interface ProductListProps {
 export default function ProductList({ search }: ProductListProps) {
   const isMobile = useMobile();
   const { menu } = useMenuContext();
+  if (menu.isLoading) return;
+
   const menuFiltrado = search || menu.menu;
 
   return (

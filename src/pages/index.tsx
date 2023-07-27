@@ -6,6 +6,7 @@ import { useMenuContext } from '@/common/context/menu';
 
 export default function Home() {
   const { menu } = useMenuContext();
+  if (menu.isLoading) return;
 
   return (
     <>
@@ -16,11 +17,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main style={{ paddingTop: 0 }}>
-        {!menu.isLoading && <>
-          <Banner />
-          <RestaurantStatus />
-          <ProductList />
-        </>}
+        <Banner />
+        <RestaurantStatus />
+        <ProductList />
       </main>
     </>
   )

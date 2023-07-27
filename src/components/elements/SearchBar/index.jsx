@@ -32,6 +32,7 @@ export default function SearchBar() {
           endAdornment: <IconButton size='small' edge='end' type='submit' aria-label='Buscar'><TbSearch size={20} /></IconButton>
         }}
         name='searchTerm'
+        type='search'
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />

@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/patterns/Header/index.jsx", "src/common/context/menu.jsx", "src/components/elements/UserMenu/UserMenuButton/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/patterns/Header/index.jsx", "src/common/context/menu.tsx", "src/components/elements/UserMenu/UserMenuButton/index.jsx", "src/components/patterns/TakeAwayAddress/index.jsx"],
   "exclude": ["node_modules"]
 }

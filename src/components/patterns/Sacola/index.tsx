@@ -7,14 +7,16 @@ import useValorSacola from '@/common/hooks/useValorSacola';
 import { ICupom, ISacolaProduct } from '@/common/interfaces/interfaces';
 import { TbEditCircle } from 'react-icons/tb';
 import { RiQuestionLine } from 'react-icons/ri';
+import { useRouter } from 'next/router';
 
 interface SacolaProps {
   sacola: ISacolaProduct[];
+  inDrawer?: boolean;
 }
 
-export default function Sacola({ sacola }: SacolaProps) {
+export default function Sacola({ sacola, inDrawer = true }: SacolaProps) {
   const { cashback, cupom, subtotal, frete, total } = useValorSacola();
-console.log(sacola)
+
   return (
     <div className={styles.sacolaContainer}>
       <div>
@@ -79,7 +81,7 @@ console.log(sacola)
           <h3><strong>Total</strong></h3>
           <h3><strong>{total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></h3>
         </div>
-        <Button fullWidth variant='contained' color='secondary'><strong>Finalizar pedido</strong></Button>
+        {inDrawer && <Button fullWidth variant='contained' color='secondary' href='/finalizar'><strong>Escolher forma de pagamento</strong></Button>}
       </div>
     </div>
   )

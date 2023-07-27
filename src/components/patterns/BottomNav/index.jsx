@@ -27,7 +27,7 @@ export default function BottomNav() {
   return (
     <>
       <div className={styles.bottomNavContainer}>
-        {isMobile &&
+        {isMobile && router.pathname !== '/finalizar' &&
           <Slide direction='up' in={openDraw !== 'sacola' && Boolean(sacola.length)}>
             <SacolaMobile sacola={sacola} />
           </Slide>}

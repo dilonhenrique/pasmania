@@ -30,23 +30,25 @@ export default function OrderCard({ order }: OrderCardProps) {
   const { menu } = useMenuContext();
 
   function repetirPedido(products: ISacolaProduct[]) {
-    const updatedProducts = products.reduce((array: ISacolaProduct[], produto: ISacolaProduct) => {
-      let novoProd: IProduct | undefined = undefined;
+    if (!menu.isLoading) {
+      const updatedProducts = products.reduce((array: ISacolaProduct[], produto: ISacolaProduct) => {
+        let novoProd: IProduct | undefined = undefined;
 
-      menu.menu.forEach((categoria: ICategory) => {
-        if (novoProd === undefined) {
-          novoProd = categoria.products.find(item => item.sku === produto.sku);
-        } else { return }
-      })
+        menu.menu.forEach((categoria: ICategory) => {
+          if (novoProd === undefined) {
+            novoProd = categoria.products.find(item => item.sku === produto.sku);
+          } else { return }
+        })
 
-      if (novoProd) {
-        array.push(novoProd);
-        addItemSacola(novoProd, produto.qtd);
-      } else {
-        console.log(`Produto ${produto.product} não está disponível.`)
-      }
-      return array;
-    }, [])
+        if (novoProd) {
+          array.push(novoProd);
+          addItemSacola(novoProd, produto.qtd);
+        } else {
+          console.log(`Produto ${produto.product} não está disponível.`)
+        }
+        return array;
+      }, [])
+    }
   }
 
   return (

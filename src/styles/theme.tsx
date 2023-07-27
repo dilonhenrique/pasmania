@@ -50,11 +50,31 @@ const theme = createTheme({
         LinkComponent: LinkIntegration
       }
     },
-    // MuiButton: {
-    //   defaultProps: {
-    //     color: 'primary',
-    //   }
-    // },
+    MuiButton: {
+      styleOverrides: {
+        outlined: ({ theme, ownerState }) => ({
+          borderColor: theme.palette.grey[300],
+          '&:hover': {
+            borderColor: theme.palette.grey[300],
+            backgroundColor: theme.palette.common.white,
+            boxShadow: '0 3px 6px rgba(0, 0, 0, 0.1)',
+          },
+          // '&.ativo': {
+          //   borderColor: theme.palette.secondary.main,
+          //   '&:hover': {
+          //     borderColor: theme.palette.secondary.main,
+          //   }
+          // }
+        })
+      }
+    },
+    MuiTooltip: {
+      styleOverrides:{
+        tooltip:{
+          fontSize: '0.8rem'
+        }
+      }
+    },
     MuiDialog: {
       styleOverrides: {
         root: {
@@ -77,11 +97,11 @@ const theme = createTheme({
       }
     },
     MuiDrawer: {
-      styleOverrides:{
-        root:{
+      styleOverrides: {
+        root: {
           zIndex: 18,
         },
-        paper:{
+        paper: {
           paddingTop: '4rem',
           paddingBottom: '4.5rem',
         }

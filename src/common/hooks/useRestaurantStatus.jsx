@@ -1,58 +1,43 @@
 import { useMenuContext } from '@/common/context/menu';
-import createOpenDays from '@/common/functions/createOpenDaysObj';
+import usePeriodFromDate from './usePeriodFromDate';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+dayjs.extend(isBetween);
 
 export default function useRestaurantStatus() {
-  const { menu } = useMenuContext();
-  const hoje = new Date();
-  const openDays = createOpenDays(menu.weekDeliveryStore);
+  const data = dayjs();
+  const status = usePeriodFromDate(data);
 
-  return isRestaurantOpen(openDays, hoje);
-}
+  let isOpen, nextEvent = {};
 
-function isRestaurantOpen(openDays, data = new Date()) {
-  const [agora] = data.toTimeString().split(' ');
-  const [aH, aM, aS] = agora.split(':');
-  const weekDay = data.getDay();
+  status.openPeriod.forEach(periodo => {
+    if (isOpen !== undefined) return;
 
-  const holiday = isHoliday(data);
-  const keyDay = holiday.is ? 7 : weekDay;
+    const openTime = dayjs(`${data.format('YYYY-MM-DD')}T${periodo.openTime}`);
+    const closeTime = dayjs(`${data.format('YYYY-MM-DD')}T${periodo.closeTime}`);
 
-  let isOpen;
-  let nextEvent = {};
-
-  if (openDays[keyDay]) {
-    openDays[keyDay].openPeriod.forEach(periodo => {
-      if (isOpen !== undefined) return;
-
-      const [oH, oM, oS] = periodo.openTime.split(':');
-      const [cH, cM, cS] = periodo.closeTime.split(':');
-
-      const moreThanOpen = aH > oH || (aH === oH && aM > oM || (aM === oM && aS >= oS));
-      const lessThenClosed = aH < cH || (aH === cH && aM < cM || (aM === cM && aS <= cS));
-
-      if (moreThanOpen && lessThenClosed) {
-        isOpen = true;
-        nextEvent = {
-          time: periodo.closeTime
-        }
-      } else {
-        //restaurante fechado
-        if (!moreThanOpen) {
-          isOpen = false;
-          nextEvent = {
-            day: weekDay,
-            time: periodo.openTime,
-          }
-        }
+    if (data.isBetween(openTime, closeTime, 'second')) {
+      isOpen = true;
+      nextEvent = {
+        time: periodo.closeTime
       }
-    })
-  }
+    } else if (data.isBefore(openTime)) {
+      isOpen = false;
+      nextEvent = {
+        day: data.day(),
+        time: periodo.openTime,
+      }
+    }
+  })
 
   if (isOpen === undefined) {
-    const newWeekDay = weekDay < 6 ? weekDay + 1 : 0;
+    const newData = dayjs(data).add(1,'day');
+    const newStatus = usePeriodFromDate(newData);
+    
+    isOpen = false;
     nextEvent = {
-      day: newWeekDay,
-      time: openDays[newWeekDay]?.openPeriod[0].openTime
+      day: newData.day(),
+      time: newStatus.openPeriod[0].openTime,
     }
   }
 
@@ -60,23 +45,4 @@ function isRestaurantOpen(openDays, data = new Date()) {
     isOpen,
     nextEvent
   };
-}
-
-function isHoliday(date) {
-  const { menu } = useMenuContext();
-
-  let isDateHoliday = { is: false };
-
-  menu.holidays.forEach(holiday => {
-    const holidate = new Date(holiday.date);
-
-    if (holidate.toDateString() === date.toDateString()) {
-      isDateHoliday = {
-        is: true,
-        open: holiday.open,
-      }
-    }
-  })
-
-  return isDateHoliday;
 }

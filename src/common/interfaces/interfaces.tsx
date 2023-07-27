@@ -1,3 +1,103 @@
+export interface IMenu {
+  isLoading: false | undefined;
+  pix: boolean;
+  filial: string;
+  frontImage: string[],
+  frontImageSKU: string[],
+  parentStore: boolean;
+  authkey: string;
+  id_loja: string;
+  allowFractioned: boolean;
+  paymentTypes: IPaymentType[];
+  weekDeliveryRoute: string[];
+  weekDeliveryStore: IOpenTime[];
+  weekShopStore: IOpenTime[];
+  holidays: IHoliday[];
+  questions: IQuestion[];
+  colorStore: any;
+  blocked: boolean;
+  showPhoto: boolean;
+  showDescription: boolean;
+  info: any;
+  pagsegurochavepub: string;
+  timeTakeAwayMin: string;
+  timeTakeAwayMax: string;
+  open: boolean;
+  timeDeliverMin: string;
+  timeDeliverMax: string;
+  scheduled: boolean;
+  purchaseMin: number;
+  freeDelivery: number;
+  modules: number;
+  takeawayOptions: string[];
+  cashPayments: string;
+  physicalPayments: string;
+  onlinePayments: string;
+  gularisToken: string;
+  gularisMinimum: number;
+  gularisUrl: string;
+  CEPNeeded: boolean;
+  storesLocations: IStoreLocation[];
+  menu: ICategory[];
+  area: string[];
+  radius: string[];
+  radiusmax: number;
+}
+
+export interface IArea {
+  name: string;
+  UF: string;
+  districts: IDistrict[];
+}
+
+export interface IDistrict {
+  name: string;
+  id_loja: string;
+  deliveryFee: number;
+  permission: string;
+  restrictions?: IRestriction[];
+}
+
+export interface IRestriction {
+  street: string;
+  postalCode: string;
+  id_loja: string;
+  status: string;
+}
+
+export interface IStoreLocation {
+  id_loja: string;
+  address: string;
+  store: string;
+}
+
+export interface IQuestion {
+  code: number;
+  question: string;
+  internal: string;
+  answer: boolean | string[];
+  type: number;
+}
+
+export interface IHoliday {
+  day: string;
+  date: string;
+  open: boolean;
+}
+
+export interface IOpenTime {
+  openTime: string;
+  closeTime: string;
+  weekDay: string[];
+  day: number[];
+}
+
+export interface IPaymentType {
+  code: string;
+  description: string;
+  online: string;
+}
+
 export interface ICategory {
   category: string;
   categorySKU: number;

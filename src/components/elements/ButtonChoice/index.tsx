@@ -6,17 +6,11 @@ interface ButtonChoiceProps extends ButtonProps {
 };
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  borderColor: theme.palette.grey[200],
   paddingTop: '1rem',
   paddingBottom: '1rem',
   justifyContent: 'flex-start',
   textTransform: 'none',
   fontSize: 'inherit',
-  '&:hover': {
-    borderColor: theme.palette.grey[200],
-    backgroundColor: theme.palette.common.white,
-    boxShadow: '0 3px 6px rgba(0, 0, 0, 0.1)',
-  },
   'svg': {
     color: theme.palette.secondary.main,
   },

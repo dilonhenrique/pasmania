@@ -8,10 +8,12 @@ import styles from './Header.module.scss';
 import { useTheme } from '@emotion/react';
 import useMobile from '@/common/hooks/useMobile';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Header() {
   const theme = useTheme();
   const isMobile = useMobile();
+  const router = useRouter();
 
   return (
     <header className={styles.header} style={{ backgroundColor: theme.palette.secondary.main }}>
@@ -27,7 +29,7 @@ export default function Header() {
             <SearchBar />
             <div className={styles.iconContainer}>
               <UserMenuButton />
-              <SacolaButton />
+              {router.pathname !== '/finalizar' && <SacolaButton />}
             </div>
           </>}
       </div>

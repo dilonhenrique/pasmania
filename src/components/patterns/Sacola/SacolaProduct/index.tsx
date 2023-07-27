@@ -21,7 +21,7 @@ export default function SacolaProduct({ product }: SacolaProductProps) {
         <p>{product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
       </div>
       <div>
-        <Tooltip title='Tirar da sacola' slotProps={{ tooltip: { sx: { fontSize: '0.8rem' } } }}>
+        <Tooltip title='Tirar da sacola'>
           <IconButton onClick={() => removeItemSacola(product.id)} edge='end'>
             <TiDelete />
           </IconButton>
