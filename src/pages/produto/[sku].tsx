@@ -14,14 +14,16 @@ export default function Product() {
 
   function getProduct() {
     let retorno = undefined as IProduct | undefined;
-    menu?.menu?.forEach((categoria: ICategory) => {
-      if (retorno !== undefined) return;
-      categoria.products.forEach(item => {
-        if (String(item.sku) === router.query.sku) {
-          retorno = item;
-        }
+    if (!menu.isLoading) {
+      menu.menu?.forEach((categoria: ICategory) => {
+        if (retorno !== undefined) return;
+        categoria.products.forEach(item => {
+          if (String(item.sku) === router.query.sku) {
+            retorno = item;
+          }
+        })
       })
-    })
+    }
 
     return retorno;
   }
