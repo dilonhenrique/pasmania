@@ -6,6 +6,8 @@ import ScrollMenu from '@/components/patterns/ScrollMenu';
 import { Typography } from '@mui/material';
 import { ICategory } from '@/common/interfaces/interfaces';
 import useMobile from '@/common/hooks/useMobile';
+import Page404 from '@/pages/404';
+import IllustrationSearch from '@/components/elements/IllustrationSearch';
 
 interface ProductListProps {
   search?: ICategory[] | null;
@@ -23,7 +25,7 @@ export default function ProductList({ search }: ProductListProps) {
       {(search === undefined || !isMobile) && <ScrollMenu menu={menu.menu} />}
       <section className='container'>
         {search === null
-          ? <>Busque o produto que quiser...</>
+          ? <center><IllustrationSearch /></center>
           : menuFiltrado.length
             ? menuFiltrado?.map((categoria: ICategory) => {
               if (categoria.products?.length === 0) return;
@@ -39,7 +41,7 @@ export default function ProductList({ search }: ProductListProps) {
               )
             }
             )
-            : <>Nenhum produto encontrado!</>}
+            : <Page404 />}
       </section>
     </>
   )
