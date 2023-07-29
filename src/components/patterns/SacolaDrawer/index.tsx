@@ -6,6 +6,7 @@ import useMobile from '@/common/hooks/useMobile';
 import { useOpenContext } from '@/common/context/open';
 import DrawerTitle from '@/components/elements/DrawerTitle';
 import { TbPaperBagOff } from 'react-icons/tb';
+import IllustrationEmptyBag from '@/components/elements/IllustrationEmptyBag';
 
 export default function SacolaDrawer() {
   const { openDraw, setOpenDraw } = useOpenContext();
@@ -45,7 +46,7 @@ export default function SacolaDrawer() {
           }>Minha sacola</DrawerTitle>
           {sacola.length
             ? <Sacola sacola={sacola} />
-            : <>Nenhum item na sua sacola :(</>
+            : <IllustrationEmptyBag />
           }
         </Stack>
       </Drawer>
