@@ -25,9 +25,14 @@ export const getServerSideProps: GetServerSideProps<{ order: IOrder | undefined 
   const orders = myOrders;
   const order = orders.find(order => order.id === id);
 
+  if (order)
   return {
     props: {
       order
     },
+  };
+
+  return {
+    notFound:true
   };
 };

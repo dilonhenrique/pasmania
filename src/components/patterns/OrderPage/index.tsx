@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ICategory, IOrder, IProduct, ISacolaProduct } from '@/common/interfaces/interfaces';
-import { Button, FormGroup, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import styles from './OrderPage.module.scss';
-import { HiCurrencyDollar, HiMinus, HiPlus } from 'react-icons/hi';
-import { TiPlusOutline } from 'react-icons/ti';
 import { useSacolaContext } from '@/common/context/sacola';
 import { CiReceipt } from 'react-icons/ci';
 import { useMenuContext } from '@/common/context/menu';
+import NotFoundMessage from '@/components/elements/NotFoundMessage';
 
 interface OrderPageProps {
   order?: IOrder;
 }
 
 export default function OrderPage({ order }: OrderPageProps) {
-  if (!order) return <>Não encontrado</>;
+  if (!order) return <NotFoundMessage message='Pedido não encontrado' />;
 
   const { addItemSacola } = useSacolaContext();
   const { menu } = useMenuContext();

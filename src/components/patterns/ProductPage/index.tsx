@@ -5,13 +5,14 @@ import styles from './ProductPage.module.scss';
 import { HiCurrencyDollar, HiMinus, HiPlus } from 'react-icons/hi';
 import { TiPlusOutline } from 'react-icons/ti';
 import { useSacolaContext } from '@/common/context/sacola';
+import NotFoundMessage from '@/components/elements/NotFoundMessage';
 
 interface ProductPageProps {
   product?: IProduct;
 }
 
 export default function ProductPage({ product }: ProductPageProps) {
-  if (!product) return <>Não encontrado</>;
+  if (!product) return <NotFoundMessage message='Produto não encontrado' />;
 
   const { addItemSacola } = useSacolaContext();
   const [qtd, setQtd] = useState(1);
